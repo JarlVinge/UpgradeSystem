@@ -1,20 +1,26 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic;
+using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.GameContent.UI.Elements;
 using Terraria.GameInput;
 using Terraria.UI;
 
-namespace DushyUpgrade.UI {
+namespace UpgradeSystem.UI {
     class UIRepairWorkbench {
 
         private static string[] labels = new string[] { "Item to Repair", "Repair Scroll" };
 
+        private static UIPanel panel;
+
         public static void DrawSelf(SpriteBatch spriteBatch) {
+
             float oldScale = Main.inventoryScale;
             Main.inventoryScale = 0.75f;
             Point value = new Point(Main.mouseX, Main.mouseY);
@@ -90,7 +96,6 @@ namespace DushyUpgrade.UI {
                     return true;
                 else
                     return false;
-
             else//Second slot
                 return DushyUpgrade.repairScrolls.Contains(item.type);
         }

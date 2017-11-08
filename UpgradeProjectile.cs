@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DushyUpgrade {
+namespace UpgradeSystem {
     class UpgradeProjectile : GlobalProjectile {
 
         public override bool PreAI(Projectile projectile) {

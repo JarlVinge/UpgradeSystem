@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using ReLogic.Graphics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,29 +9,39 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.GameInput;
 using Terraria.UI;
+using Terraria.GameContent.UI.Elements;
+using Terraria.Graphics;
 
-namespace DushyUpgrade.UI {
+namespace UpgradeSystem.UI {
     class UIUpgradeWorkbench {
 
-        private static string[] labels = new string[] { "Item to Upgrade", "Upgrade Stone", "Scroll of Protection" };
+        private static string[] labels = new string[] { "Item", "Upgrade Stone", "Scroll of Protection" };
+        private static Texture2D _backgroundTexture = TextureManager.Load("Images/UI/PanelBackground");
+        private static Texture2D _borderTexture = TextureManager.Load("Images/UI/PanelBorder");
+        private static int CORNER_SIZE = 12;
+        private static int BAR_SIZE = 4;
+        private static int X = 167;
+        private static int Y = Main.instance.invBottom + 44;
+        private static int width = 200;
+        private static int height = 210;
 
         public static void DrawSelf(SpriteBatch spriteBatch) {
+            UIUpgradeWorkbench.DrawPanel(spriteBatch, UIUpgradeWorkbench._backgroundTexture, new Color(33, 43, 79) * 0.8f);
+            UIUpgradeWorkbench.DrawPanel(spriteBatch, UIUpgradeWorkbench._borderTexture, new Color(89, 116, 213) * 0.7f);
+
             float oldScale = Main.inventoryScale;
             Main.inventoryScale = 0.75f;
             Point value = new Point(Main.mouseX, Main.mouseY);
 
-            Rectangle hitbox = new Rectangle(167 - 8, Main.instance.invBottom + 44, 200, 220);
-            Main.spriteBatch.Draw(Main.magicPixel, hitbox, Color.Gray);
-
             Main.spriteBatch.DrawString(Main.fontMouseText,
-                "Upgrade Workbench", new Vector2(167 + 33, Main.instance.invBottom + 54),
+                "Upgrade Workbench", new Vector2(UIUpgradeWorkbench.X + 33, UIUpgradeWorkbench.Y + 10),
                 Color.White, 0f, default(Vector2), Main.inventoryScale, SpriteEffects.None, 0f);
 
-            hitbox = new Rectangle(167 + 40, Main.instance.invBottom + 44 + 170, 100, 40);
-            Main.spriteBatch.Draw(Main.magicPixel, hitbox, Color.Black);
+            Rectangle hitbox = new Rectangle(UIUpgradeWorkbench.X + 66, UIUpgradeWorkbench.Y + 180, 50, 18);
             Main.spriteBatch.DrawString(Main.fontMouseText,
-                "Upgrade", new Vector2(167 + 66, Main.instance.invBottom + 44 + 180),
+                "Upgrade", new Vector2(UIUpgradeWorkbench.X + 66, UIUpgradeWorkbench.Y + 180),
                 Color.White, 0f, default(Vector2), Main.inventoryScale, SpriteEffects.None, 0f);
+            
 
             if (hitbox.Contains(value) && !PlayerInput.IgnoreMouseInterface && Main.mouseLeft && Main.mouseLeftRelease) {
                 Main.player[Main.myPlayer].mouseInterface = true;
@@ -49,7 +60,7 @@ namespace DushyUpgrade.UI {
                         if (isProtected)
                             DushyUpgrade.upgradeWorkbenchTE.protectionScroll.stack--;
 
-                        /*if (result == DushyUpgrade.SUCCESS) {
+                        /*if (result == UpgradeSystem.SUCCESS) {
                             ItemText.NewText(Main.player[Main.myPlayer], "Success !", Color.Green);
                             if(IsItemMaxLevel(upgradeWorkbenchTE.upgradeItem)) {
                                 ItemText.NewText(Main.player[Main.myPlayer], "Level Max !", Color.LightSkyBlue);
@@ -107,8 +118,8 @@ namespace DushyUpgrade.UI {
                 }
             }
             for (int i = 0; i < 3; i++) {
-                int x = 167;
-                int y = 42 * i + Main.instance.invBottom + 84;
+                int x = UIUpgradeWorkbench.X;
+                int y = 42 * i + UIUpgradeWorkbench.Y + 40;
                 Rectangle r = new Rectangle(x, y, (int)((float)Main.inventoryBackTexture.Width * Main.inventoryScale), (int)((float)Main.inventoryBackTexture.Height * Main.inventoryScale));
                 Item item = i == 0 ? DushyUpgrade.upgradeWorkbenchTE.upgradeItem : (i == 1 ? DushyUpgrade.upgradeWorkbenchTE.upgradeStone : DushyUpgrade.upgradeWorkbenchTE.protectionScroll);
 
@@ -137,6 +148,22 @@ namespace DushyUpgrade.UI {
                 Color.White, 0f, default(Vector2), Main.inventoryScale, SpriteEffects.None, 0f);
             }
             Main.inventoryScale = oldScale;
+        }
+
+        public static void DrawPanel(SpriteBatch spriteBatch, Texture2D texture, Color color) {
+            Point point = new Point(UIUpgradeWorkbench.X - 8, UIUpgradeWorkbench.Y);
+            Point point2 = new Point(point.X + UIUpgradeWorkbench.width - UIUpgradeWorkbench.CORNER_SIZE, point.Y + UIUpgradeWorkbench.height);
+            int width = point2.X - point.X - UIUpgradeWorkbench.CORNER_SIZE;
+            int height = point2.Y - point.Y - UIUpgradeWorkbench.CORNER_SIZE;
+            spriteBatch.Draw(texture, new Rectangle(point.X, point.Y, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE), new Rectangle?(new Rectangle(0, 0, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE)), color);
+            spriteBatch.Draw(texture, new Rectangle(point2.X, point.Y, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE), new Rectangle?(new Rectangle(UIUpgradeWorkbench.CORNER_SIZE + UIUpgradeWorkbench.BAR_SIZE, 0, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE)), color);
+            spriteBatch.Draw(texture, new Rectangle(point.X, point2.Y, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE), new Rectangle?(new Rectangle(0, UIUpgradeWorkbench.CORNER_SIZE + UIUpgradeWorkbench.BAR_SIZE, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE)), color);
+            spriteBatch.Draw(texture, new Rectangle(point2.X, point2.Y, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE), new Rectangle?(new Rectangle(UIUpgradeWorkbench.CORNER_SIZE + UIUpgradeWorkbench.BAR_SIZE, UIUpgradeWorkbench.CORNER_SIZE + UIUpgradeWorkbench.BAR_SIZE, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE)), color);
+            spriteBatch.Draw(texture, new Rectangle(point.X + UIUpgradeWorkbench.CORNER_SIZE, point.Y, width, UIUpgradeWorkbench.CORNER_SIZE), new Rectangle?(new Rectangle(UIUpgradeWorkbench.CORNER_SIZE, 0, UIUpgradeWorkbench.BAR_SIZE, UIUpgradeWorkbench.CORNER_SIZE)), color);
+            spriteBatch.Draw(texture, new Rectangle(point.X + UIUpgradeWorkbench.CORNER_SIZE, point2.Y, width, UIUpgradeWorkbench.CORNER_SIZE), new Rectangle?(new Rectangle(UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE + UIUpgradeWorkbench.BAR_SIZE, UIUpgradeWorkbench.BAR_SIZE, UIUpgradeWorkbench.CORNER_SIZE)), color);
+            spriteBatch.Draw(texture, new Rectangle(point.X, point.Y + UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE, height), new Rectangle?(new Rectangle(0, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.BAR_SIZE)), color);
+            spriteBatch.Draw(texture, new Rectangle(point2.X, point.Y + UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE, height), new Rectangle?(new Rectangle(UIUpgradeWorkbench.CORNER_SIZE + UIUpgradeWorkbench.BAR_SIZE, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.BAR_SIZE)), color);
+            spriteBatch.Draw(texture, new Rectangle(point.X + UIUpgradeWorkbench.CORNER_SIZE, point.Y + UIUpgradeWorkbench.CORNER_SIZE, width, height), new Rectangle?(new Rectangle(UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.CORNER_SIZE, UIUpgradeWorkbench.BAR_SIZE, UIUpgradeWorkbench.BAR_SIZE)), color);
         }
 
         public static bool CanGoInSlot(Item item, int slotNumber) {

@@ -7,8 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DushyUpgrade.Items
-{
+namespace UpgradeSystem.Items.Scrolls.UpgradeScrolls {
     class UpgradeScroll10 : ModItem
     {
         public int scrollLevel = 10;

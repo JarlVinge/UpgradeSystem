@@ -7,8 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DushyUpgrade.Items
-{
+namespace UpgradeSystem.Items.Scrolls {
     class ProtectionScroll : ModItem
     {
         public override void SetDefaults()

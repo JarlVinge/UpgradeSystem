@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DushyUpgrade {
+namespace UpgradeSystem.UI {
     public class ItemText {
         public Vector2 position;
         public Vector2 velocity;

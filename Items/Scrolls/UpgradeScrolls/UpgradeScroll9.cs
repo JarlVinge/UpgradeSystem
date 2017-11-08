@@ -7,11 +7,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DushyUpgrade.Items
-{
-    class UpgradeScroll8 : ModItem
+namespace UpgradeSystem.Items.Scrolls.UpgradeScrolls {
+    class UpgradeScroll9 : ModItem
     {
-        public int scrollLevel = 8;
+        public int scrollLevel = 9;
         public override void SetDefaults()
         {
             item.UseSound = SoundID.Item43;
@@ -21,8 +20,8 @@ namespace DushyUpgrade.Items
             item.useTime = 20;
             item.maxStack = 99;
             item.consumable = true;
-            item.value = 5000000;
-            item.rare = 8;
+            item.value = 10000000;
+            item.rare = 9;
             return;
         }
         public override void SetStaticDefaults()
@@ -45,7 +44,7 @@ namespace DushyUpgrade.Items
 
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "UpgradeScroll7", 5);
+            recipe.AddIngredient(null, "UpgradeScroll8", 2);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

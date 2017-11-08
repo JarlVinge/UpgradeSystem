@@ -9,7 +9,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace DushyUpgrade {
+namespace UpgradeSystem {
     class UpgradePlayer : ModPlayer {
         public bool protectingStone { get; set; }
         internal void SetProperties(bool protectingStone) {

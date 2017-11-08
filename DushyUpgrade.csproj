@@ -43,15 +43,15 @@
     <Compile Include="Items\Scrolls\ElementalScroll.cs" />
     <Compile Include="Items\Scrolls\ProtectionScroll.cs" />
     <Compile Include="Items\Scrolls\RepairScroll.cs" />
-    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll10.cs" />
-    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll11.cs" />
-    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll4.cs" />
-    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll5.cs" />
-    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll6.cs" />
-    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll7.cs" />
-    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll8.cs" />
-    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll9.cs" />
-    <Compile Include="Items\Scrolls\UpgradeStone.cs" />
+    <Compile Include="Items\Scrolls\UpgradeScrolls\UpgradeScroll10.cs" />
+    <Compile Include="Items\Scrolls\UpgradeScrolls\UpgradeScroll11.cs" />
+    <Compile Include="Items\Scrolls\UpgradeScrolls\UpgradeScroll4.cs" />
+    <Compile Include="Items\Scrolls\UpgradeScrolls\UpgradeScroll5.cs" />
+    <Compile Include="Items\Scrolls\UpgradeScrolls\UpgradeScroll6.cs" />
+    <Compile Include="Items\Scrolls\UpgradeScrolls\UpgradeScroll7.cs" />
+    <Compile Include="Items\Scrolls\UpgradeScrolls\UpgradeScroll8.cs" />
+    <Compile Include="Items\Scrolls\UpgradeScrolls\UpgradeScroll9.cs" />
+    <Compile Include="Items\UpgradeStone.cs" />
     <Compile Include="Items\Placeable\SocketWorkbench.cs" />
     <Compile Include="Items\Placeable\UpgradeWorkbench.cs" />
     <Compile Include="NPCs\Upgradist.cs" />
@@ -85,6 +85,9 @@
     <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.Xna.Framework.Xact\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Xact.dll</HintPath>
+    </Reference>
+    <Reference Include="ReLogic">
+      <HintPath>..\..\..\..\..\..\Desktop\ReLogic.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Terraria">

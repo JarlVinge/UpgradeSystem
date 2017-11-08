@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DushyUpgrade.Items;
+using UpgradeSystem.Items;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace DushyUpgrade {
+namespace UpgradeSystem {
     class UpgradeProjectileInfo : GlobalProjectile {
         public bool elemented { get; set; }
         public bool broken { get; set; }

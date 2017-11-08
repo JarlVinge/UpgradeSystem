@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DushyUpgrade.Items {
+namespace UpgradeSystem.Items.Orbs {
     class OrbLifeSteal : ModItem {
         public override void SetDefaults() {
             item.UseSound = SoundID.Item43;

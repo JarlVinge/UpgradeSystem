@@ -1,17 +1,15 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DushyUpgrade.Items
-{
-	public class UpgradeWorkbench : ModItem
-	{
-		public override void SetStaticDefaults()
-		{
+namespace UpgradeSystem.Items.Placeable {
+
+	public class UpgradeWorkbench : ModItem {
+
+		public override void SetStaticDefaults() {
 			Tooltip.SetDefault("This is a modded workbench.");
 		}
 
-		public override void SetDefaults()
-		{
+		public override void SetDefaults() {
 			item.width = 28;
 			item.height = 14;
 			item.maxStack = 99;
@@ -25,8 +23,7 @@ namespace DushyUpgrade.Items
 			item.createTile = mod.TileType("UpgradeWorkbench");
 		}
 
-		public override void AddRecipes()
-		{
+		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			//recipe.AddIngredient(ItemID.WorkBench);
 			//recipe.AddIngredient(null, "ExampleBlock", 10);

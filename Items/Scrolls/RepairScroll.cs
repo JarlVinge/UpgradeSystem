@@ -7,12 +7,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DushyUpgrade.Items
-{
-    class RepairScroll : ModItem
-    {
-        public override void SetDefaults()
-        {
+namespace UpgradeSystem.Items.Scrolls {
+    class RepairScroll : ModItem {
+        public override void SetDefaults() {
             item.UseSound = SoundID.Item43;
             item.useStyle = 4;
             item.useTurn = true;
@@ -24,13 +21,11 @@ namespace DushyUpgrade.Items
             item.rare = 6;
             return;
         }
-        public override void SetStaticDefaults()
-        {
+        public override void SetStaticDefaults() {
             DisplayName.SetDefault("Scroll of Repair");
             Tooltip.SetDefault("Repairs your broken items and restores previous enhancements.");
         }
-        public override bool UseItem(Player player)
-        {
+        public override bool UseItem(Player player) {
             Item item = player.inventory[0];
             if (item.type > 0) {
                 UpgradeInfo info = item.GetGlobalItem<UpgradeInfo>(mod);

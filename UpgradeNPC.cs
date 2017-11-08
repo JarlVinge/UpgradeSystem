@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DushyUpgrade {
+namespace UpgradeSystem {
     class UpgradeNPC : GlobalNPC {
         public override void NPCLoot(NPC npc) {
             if (Main.rand.Next(10000) < 250) { //2.5% UpgradeStone

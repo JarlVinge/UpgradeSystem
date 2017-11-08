@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DushyUpgrade.Items {
+namespace UpgradeSystem.Items.Placeable {
+
     public class RepairWorkbench : ModItem {
+
         public override void SetStaticDefaults() {
             Tooltip.SetDefault("Repair your broken weapons on this workbench.");
         }

@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace DushyUpgrade.Tiles {
+namespace UpgradeSystem.Tiles {
     public class RepairWorkbench : ModTile {
         public override void SetDefaults() {
             Main.tileSolidTop[Type] = true;

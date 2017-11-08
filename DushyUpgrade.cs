@@ -1,5 +1,6 @@
-using DushyUpgrade.Tiles;
-using DushyUpgrade.UI;
+using UpgradeSystem.Tiles;
+using UpgradeSystem.UI;
+using UpgradeSystem.Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
@@ -10,8 +11,10 @@ using Terraria;
 using Terraria.GameInput;
 using Terraria.ModLoader;
 using Terraria.UI;
+using UpgradeSystem.Items.Scrolls;
+using UpgradeSystem.Items.Scrolls.UpgradeScrolls;
 
-namespace DushyUpgrade
+namespace UpgradeSystem
 {
 	class DushyUpgrade : Mod
 	{
@@ -47,26 +50,26 @@ namespace DushyUpgrade
 		public override void Load()
 		{
             upgradeStones = new int[] {
-                ItemType<Items.UpgradeStone>(),
+                ItemType<UpgradeStone>(),
             };
 
             protectionScrolls = new int[] {
-				ItemType<Items.ProtectionScroll>(),
+				ItemType<ProtectionScroll>(),
 			};
 
             upgradeScrolls = new int[] {
-                ItemType<Items.UpgradeScroll4>(),
-                ItemType<Items.UpgradeScroll5>(),
-                ItemType<Items.UpgradeScroll6>(),
-                ItemType<Items.UpgradeScroll7>(),
-                ItemType<Items.UpgradeScroll8>(),
-                ItemType<Items.UpgradeScroll9>(),
-                ItemType<Items.UpgradeScroll10>(),
-                ItemType<Items.UpgradeScroll11>(),
+                ItemType<UpgradeScroll4>(),
+                ItemType<UpgradeScroll5>(),
+                ItemType<UpgradeScroll6>(),
+                ItemType<UpgradeScroll7>(),
+                ItemType<UpgradeScroll8>(),
+                ItemType<UpgradeScroll9>(),
+                ItemType<UpgradeScroll10>(),
+                ItemType<UpgradeScroll11>(),
             };
 
             repairScrolls = new int[] {
-                ItemType<Items.RepairScroll>(),
+                ItemType<RepairScroll>(),
             };
         }
 
@@ -84,10 +87,9 @@ namespace DushyUpgrade
 			int inventoryLayerIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
 			if (inventoryLayerIndex != -1)
 			{
-				layers.Insert(inventoryLayerIndex, new LegacyGameInterfaceLayer(
-					"DushyUpgrade: Upgrade UI",
-					delegate
-					{
+                layers.Insert(inventoryLayerIndex, new LegacyGameInterfaceLayer(
+                    "UpgradeSystem: Upgrade UI",
+                    delegate {
                         if (upgradeWorkbenchTE != null) {
                             UIUpgradeWorkbench.DrawSelf(Main.spriteBatch);
                         }

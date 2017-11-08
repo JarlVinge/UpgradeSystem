@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DushyUpgrade.NPCs
+namespace UpgradeSystem.NPCs
 {
     class Dushy : ModNPC
     {

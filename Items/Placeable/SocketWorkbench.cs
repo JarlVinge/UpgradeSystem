@@ -1,8 +1,10 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DushyUpgrade.Items {
+namespace UpgradeSystem.Items.Placeable {
+
     public class SocketWorkbench : ModItem {
+
         public override void SetStaticDefaults() {
             Tooltip.SetDefault("This is a modded workbench.");
         }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using ReLogic.Graphics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ using Terraria;
 using Terraria.GameInput;
 using Terraria.UI;
 
-namespace DushyUpgrade.UI {
+namespace UpgradeSystem.UI {
     class UISocketWorkbench {
 
         private static string[] labels = new string[] { "Item to Upgrade", "Upgrade Stone", "Scroll of Protection" };

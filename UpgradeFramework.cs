@@ -11,10 +11,10 @@ using System.Reflection;
 using Microsoft.Xna.Framework;
 using System.Security.Cryptography;
 
-namespace DushyUpgrade {
+namespace UpgradeSystem {
     public class UpgradeFramework {
         internal static Mod mod {
-            get { return ModLoader.GetMod("DushyUpgrade"); }
+            get { return ModLoader.GetMod("UpgradeSystem"); }
         }
     }
 }

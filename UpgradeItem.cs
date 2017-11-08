@@ -9,7 +9,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace DushyUpgrade {
+namespace UpgradeSystem {
     class UpgradeItem : GlobalItem {
 
         public override bool NeedsSaving(Item item) {
@@ -37,13 +37,13 @@ namespace DushyUpgrade {
                     {"socket1", info.socket1},
                     {"socket2", info.socket2},
                     {"socket3", info.socket3},
-                    {"modName", "DushyUpgrade"}
+                    {"modName", "UpgradeSystem"}
                 };
             } catch (Exception e) {
                 ErrorLogger.Log(e.ToString());
             }
             return new TagCompound {
-                {"modName", "DushyUpgrade"}
+                {"modName", "UpgradeSystem"}
             };
         }
         public override void Load(Item item, TagCompound tag) {
