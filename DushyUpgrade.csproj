@@ -36,24 +36,28 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Items\ElementalScroll.cs" />
-    <Compile Include="Items\ExampleWorkbench.cs" />
-    <Compile Include="Items\OrbLifeSteal.cs" />
-    <Compile Include="Items\OrbMoveSpeed.cs" />
-    <Compile Include="Items\ProtectionScroll.cs" />
-    <Compile Include="Items\RepairScroll.cs" />
-    <Compile Include="Items\UpgradeScroll10.cs" />
-    <Compile Include="Items\UpgradeScroll11.cs" />
-    <Compile Include="Items\UpgradeScroll5.cs" />
-    <Compile Include="Items\UpgradeScroll6.cs" />
-    <Compile Include="Items\UpgradeScroll7.cs" />
-    <Compile Include="Items\UpgradeScroll8.cs" />
-    <Compile Include="Items\UpgradeScroll9.cs" />
-    <Compile Include="Items\UpgradeStone.cs" />
     <Compile Include="DushyUpgrade.cs" />
-    <Compile Include="Items\UpgradeScroll4.cs" />
+    <Compile Include="Items\Orbs\OrbLifeSteal.cs" />
+    <Compile Include="Items\Orbs\OrbMoveSpeed.cs" />
+    <Compile Include="Items\Placeable\RepairWorkbench.cs" />
+    <Compile Include="Items\Scrolls\ElementalScroll.cs" />
+    <Compile Include="Items\Scrolls\ProtectionScroll.cs" />
+    <Compile Include="Items\Scrolls\RepairScroll.cs" />
+    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll10.cs" />
+    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll11.cs" />
+    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll4.cs" />
+    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll5.cs" />
+    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll6.cs" />
+    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll7.cs" />
+    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll8.cs" />
+    <Compile Include="Items\Scrolls\Upgrade Scrolls\UpgradeScroll9.cs" />
+    <Compile Include="Items\Scrolls\UpgradeStone.cs" />
+    <Compile Include="Items\Placeable\SocketWorkbench.cs" />
+    <Compile Include="Items\Placeable\UpgradeWorkbench.cs" />
     <Compile Include="NPCs\Upgradist.cs" />
-    <Compile Include="Tiles\ExampleWorkbench.cs" />
+    <Compile Include="Tiles\RepairWorkbench.cs" />
+    <Compile Include="Tiles\SocketWorkbench.cs" />
+    <Compile Include="Tiles\UpgradeWorkbench.cs" />
     <Compile Include="UpgradeFramework.cs" />
     <Compile Include="UpgradeInfo.cs" />
     <Compile Include="UpgradeItem.cs" />
@@ -78,30 +82,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.Xna.Framework.Xact\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Xact.dll</HintPath>
     </Reference>
-    <Reference Include="ReLogic">
-      <HintPath>..\..\..\Modding\tModLoader\references\ReLogic.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="tModLoader">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoader.exe</HintPath>
+    <Reference Include="Terraria">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="build.txt" />
     <Content Include="description.txt" />
-    <Content Include="Items\ElementalScroll.png" />
-    <Content Include="Items\UpgradeScroll10.png" />
-    <Content Include="Items\UpgradeScroll11.png" />
-    <Content Include="Items\UpgradeScroll4.png" />
-    <Content Include="Items\UpgradeScroll5.png" />
-    <Content Include="Items\UpgradeScroll6.png" />
-    <Content Include="Items\UpgradeScroll7.png" />
-    <Content Include="Items\UpgradeScroll8.png" />
-    <Content Include="Items\UpgradeScroll9.png" />
-    <Content Include="Items\UpgradeStone.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Buff\" />
+    <Folder Include="UI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
