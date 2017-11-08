@@ -58,6 +58,10 @@
     <Compile Include="Tiles\RepairWorkbench.cs" />
     <Compile Include="Tiles\SocketWorkbench.cs" />
     <Compile Include="Tiles\UpgradeWorkbench.cs" />
+    <Compile Include="UI\UIRepairWorkbench.cs" />
+    <Compile Include="UI\ItemText.cs" />
+    <Compile Include="UI\UISocketWorkbench.cs" />
+    <Compile Include="UI\UIUpgradeWorkbench.cs" />
     <Compile Include="UpgradeFramework.cs" />
     <Compile Include="UpgradeInfo.cs" />
     <Compile Include="UpgradeItem.cs" />
@@ -84,7 +88,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="Terraria">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Buff\" />
-    <Folder Include="UI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -460,7 +460,7 @@ namespace DushyUpgrade {
                 broken = false;
                 info.modifier = getDamageModifier(info.level);
                 item.SetNameOverride(this.baseName);
-                if (item.melee || item.summon || item.magic || item.ranged)
+                if (DushyUpgrade.IsAWeapon(item))
                 {
                     item.damage = (int)Math.Round((Convert.ToDouble(info.baseDamage * info.modifier) / 100));
                     item.crit = (int)Math.Round((Convert.ToDouble(info.baseCrit * info.modifier) / 100));
