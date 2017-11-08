@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3B384574-EA4A-4FD3-8914-BC4DB7F11775}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DushyUpgrade</RootNamespace>
+    <AssemblyName>DushyUpgrade</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Items\ElementalScroll.cs" />
+    <Compile Include="Items\ExampleWorkbench.cs" />
+    <Compile Include="Items\OrbLifeSteal.cs" />
+    <Compile Include="Items\OrbMoveSpeed.cs" />
+    <Compile Include="Items\ProtectionScroll.cs" />
+    <Compile Include="Items\RepairScroll.cs" />
+    <Compile Include="Items\UpgradeScroll10.cs" />
+    <Compile Include="Items\UpgradeScroll11.cs" />
+    <Compile Include="Items\UpgradeScroll5.cs" />
+    <Compile Include="Items\UpgradeScroll6.cs" />
+    <Compile Include="Items\UpgradeScroll7.cs" />
+    <Compile Include="Items\UpgradeScroll8.cs" />
+    <Compile Include="Items\UpgradeScroll9.cs" />
+    <Compile Include="Items\UpgradeStone.cs" />
+    <Compile Include="DushyUpgrade.cs" />
+    <Compile Include="Items\UpgradeScroll4.cs" />
+    <Compile Include="NPCs\Upgradist.cs" />
+    <Compile Include="Tiles\ExampleWorkbench.cs" />
+    <Compile Include="UpgradeFramework.cs" />
+    <Compile Include="UpgradeInfo.cs" />
+    <Compile Include="UpgradeItem.cs" />
+    <Compile Include="UpgradeNPC.cs" />
+    <Compile Include="UpgradePlayer.cs" />
+    <Compile Include="UpgradeProjectile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.Xna.Framework\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.Xna.Framework.Game\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Game.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.Xna.Framework.Graphics\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Graphics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_32\Microsoft.Xna.Framework.Xact\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Xact.dll</HintPath>
+    </Reference>
+    <Reference Include="ReLogic">
+      <HintPath>..\..\..\Modding\tModLoader\references\ReLogic.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="tModLoader">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoader.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="build.txt" />
+    <Content Include="description.txt" />
+    <Content Include="Items\ElementalScroll.png" />
+    <Content Include="Items\UpgradeScroll10.png" />
+    <Content Include="Items\UpgradeScroll11.png" />
+    <Content Include="Items\UpgradeScroll4.png" />
+    <Content Include="Items\UpgradeScroll5.png" />
+    <Content Include="Items\UpgradeScroll6.png" />
+    <Content Include="Items\UpgradeScroll7.png" />
+    <Content Include="Items\UpgradeScroll8.png" />
+    <Content Include="Items\UpgradeScroll9.png" />
+    <Content Include="Items\UpgradeStone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Buff\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

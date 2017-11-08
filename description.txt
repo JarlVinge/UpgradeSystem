@@ -1,0 +1,49 @@
+Upgrading system for Terraria v1.4! by Dushy
+
+Thanks for your 550 downloads ! It makes me proud, proud to give you content to this awesome game.
+
+FEATURES :
+	-Upgrade your weapon using Blessed Enhancement Stone (Loot from all ennemies at a 2.5% rate).
+	-Use Scroll of Protection to protect your items when upgrading (Buyable at the NPC).
+	-NPC who sell Upgrade Scroll (from +4 to +11), Elemental Scroll (used to reroll weapons element) and Scroll of Protection.
+	-Elemental Damages when you wepaon reach +10. (Reroll element by using a Scroll of the 11 Elements).
+	-Set bonus (+30%) when all your armor (head, chestplate, legs) are at least +8.
+	-Socket System, you unlock socket by upgrading your weapon (1 Socket at +5, +8, +11).
+	-Use pearl to put pearl in the socket and give effect to your weapon (+5% LifeSteal, +5% MoveSpeed).
+	-When a upgrade fail, and your item broke, you need to repair it with a Scroll.
+
+NEXT FEATURES :
+	-Add Scroll to NPC depending on boss defeated
+	-Balance prices
+	-Add Pearl effects.
+	-Add a pearl to empty current sockets.
+	-Bosses (Post-moonlord) to drop Rare Scrolls of Upgrade
+
+ELEMENTS LIST :
+	-Fire (Inflicts on Fire! debuff)
+	-Water (Slow ennemies) //NOT WORKING YET
+	-Ice (Freeze ennemies) //NOT WORKING YET
+	-Void (10% LifeSteal)
+	-Spirit (5% LifeSteal and 5% ManaSteal)
+	-Aether (10% ManaSteal)
+	-Thunder (Confuse ennemies) //NOT WORKING YET
+	-Shadow (Inflicts ShadowFlame debuff)
+	-Toxic (Inflicts Poison debuff)
+	-Earth (Inflicts Ichor debuff)
+	-Air (Double the knockback)
+
+HOW TO USE :
+	When you use upgrade's item, it applies on the item in the first of slot of your hotbar.
+	Use a Scroll of Protection before using Blessed Enhancement Stone to avoid your item being destroyed.
+
+CHANGELOG :
+	-Version v1.0 :
+		-Original version.
+
+REPORT BUG/SUGGESTIONS :
+	@Dushy on Terraria's forum.
+	Dushy#2098 on Discord
+
+
+CREDITS :
+	-tModLoader's Discord.
