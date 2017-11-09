@@ -15,7 +15,7 @@ using Terraria.Graphics;
 namespace UpgradeSystem.UI {
     class UIUpgradeWorkbench {
 
-        private static string[] labels = new string[] { "Item", "Upgrade Stone", "Scroll of Protection" };
+        private static string[] labels = new string[] { "Item", "Upgrade Stone/Scroll", "Scroll of Protection" };
         private static Texture2D _backgroundTexture = TextureManager.Load("Images/UI/PanelBackground");
         private static Texture2D _borderTexture = TextureManager.Load("Images/UI/PanelBorder");
         private static int CORNER_SIZE = 12;
@@ -45,49 +45,33 @@ namespace UpgradeSystem.UI {
 
             if (hitbox.Contains(value) && !PlayerInput.IgnoreMouseInterface && Main.mouseLeft && Main.mouseLeftRelease) {
                 Main.player[Main.myPlayer].mouseInterface = true;
-                if (DushyUpgrade.upgradeWorkbenchTE.upgradeItem.IsAir) //First case empty
+                if (DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade.IsAir) //First case empty
                     Main.NewText("You need an item to upgrade");
-                else if (DushyUpgrade.upgradeWorkbenchTE.upgradeStone.IsAir) {
-                    Main.NewText("You need an upgrade stone to upgrade");
+                else if (DushyUpgrade.upgradeWorkbenchTE.upgradeMaterial.IsAir) {
+                    Main.NewText("You need an upgrade stone or an upgrade scroll to upgrade");
                 }
                 else {
                     Boolean isProtected = !DushyUpgrade.upgradeWorkbenchTE.protectionScroll.IsAir;
-                    if (!DushyUpgrade.IsItemBroken(DushyUpgrade.upgradeWorkbenchTE.upgradeItem)) {
-                        UpgradeInfo info = DushyUpgrade.upgradeWorkbenchTE.upgradeItem.GetGlobalItem<UpgradeInfo>();
-                        int result = info.Upgrade(DushyUpgrade.upgradeWorkbenchTE.upgradeItem, isProtected);
+                    if (!DushyUpgrade.IsItemBroken(DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade)) {
+                        UpgradeInfo info = DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade.GetGlobalItem<UpgradeInfo>();
+                        int result;
+                        if (DushyUpgrade.upgradeScrolls.Contains(DushyUpgrade.upgradeWorkbenchTE.upgradeMaterial.type))
+                            result = info.UpgradeWithScroll(DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade, DushyUpgrade.upgradeWorkbenchTE.upgradeMaterial);
+                        else
+                            result = info.Upgrade(DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade, isProtected);
 
-                        DushyUpgrade.upgradeWorkbenchTE.upgradeStone.stack--;
+                        DushyUpgrade.upgradeWorkbenchTE.upgradeMaterial.stack--;
                         if (isProtected)
                             DushyUpgrade.upgradeWorkbenchTE.protectionScroll.stack--;
 
-                        /*if (result == UpgradeSystem.SUCCESS) {
-                            ItemText.NewText(Main.player[Main.myPlayer], "Success !", Color.Green);
-                            if(IsItemMaxLevel(upgradeWorkbenchTE.upgradeItem)) {
-                                ItemText.NewText(Main.player[Main.myPlayer], "Level Max !", Color.LightSkyBlue);
-                                Item item = upgradeWorkbenchTE.upgradeItem;
-                                Item itemClone = item.Clone();
-                                Player player = Main.player[Main.myPlayer];
-                                item.position = player.Center;
-                                Item item2 = player.GetItem(player.whoAmI, itemClone, false, true);
-                                if (item2.stack > 0) {
-                                    int num = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item2.type, item2.stack, false, (int)item.prefix, true, false);
-                                    Main.item[num].newAndShiny = false;
-                                    if (Main.netMode == 1) {
-                                        NetMessage.SendData(21, -1, -1, null, num, 1f, 0f, 0f, 0, 0, 0);
-                                    }
-                                }
-                                item = new Item();
-                                upgradeWorkbenchTE.upgradeItem.TurnToAir();
-                            }
-                        }*/
                         if (result == DushyUpgrade.SUCCESS) {
                             ItemText.NewText(Main.player[Main.myPlayer], "Success !", Color.Green);
-                            if (DushyUpgrade.IsItemMaxLevel(DushyUpgrade.upgradeWorkbenchTE.upgradeItem)) {
+                            if (DushyUpgrade.IsItemMaxLevel(DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade)) {
                                 ItemText.NewText(Main.player[Main.myPlayer], "Level Max !", Color.LightSkyBlue);
                                 Player player = Main.player[Main.myPlayer];
-                                Item item = DushyUpgrade.upgradeWorkbenchTE.upgradeItem;
+                                Item item = DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade;
                                 item.position = player.Center;
-                                Item leftoverItem = player.GetItem(player.whoAmI, DushyUpgrade.upgradeWorkbenchTE.upgradeItem, false, true);
+                                Item leftoverItem = player.GetItem(player.whoAmI, DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade, false, true);
                                 if (leftoverItem.stack > 0) {
                                     int num = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, leftoverItem.type, leftoverItem.stack, false, (int)leftoverItem.prefix, true, false);
                                     Main.item[num] = leftoverItem.Clone();
@@ -96,7 +80,7 @@ namespace UpgradeSystem.UI {
                                         NetMessage.SendData(21, -1, -1, null, num, 1f, 0f, 0f, 0, 0, 0);
                                     }
                                 }
-                                DushyUpgrade.upgradeWorkbenchTE.upgradeItem.TurnToAir();
+                                DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade.TurnToAir();
                             }
                         }
                         else if (result == DushyUpgrade.NO_CHANGE) {
@@ -121,7 +105,7 @@ namespace UpgradeSystem.UI {
                 int x = UIUpgradeWorkbench.X;
                 int y = 42 * i + UIUpgradeWorkbench.Y + 40;
                 Rectangle r = new Rectangle(x, y, (int)((float)Main.inventoryBackTexture.Width * Main.inventoryScale), (int)((float)Main.inventoryBackTexture.Height * Main.inventoryScale));
-                Item item = i == 0 ? DushyUpgrade.upgradeWorkbenchTE.upgradeItem : (i == 1 ? DushyUpgrade.upgradeWorkbenchTE.upgradeStone : DushyUpgrade.upgradeWorkbenchTE.protectionScroll);
+                Item item = i == 0 ? DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade : (i == 1 ? DushyUpgrade.upgradeWorkbenchTE.upgradeMaterial : DushyUpgrade.upgradeWorkbenchTE.protectionScroll);
 
                 if (r.Contains(value) && !PlayerInput.IgnoreMouseInterface) {
                     Main.player[Main.myPlayer].mouseInterface = true;
@@ -131,10 +115,10 @@ namespace UpgradeSystem.UI {
                 ItemSlot.Draw(spriteBatch, ref item, 3, new Vector2(x, y));
                 switch (i) {
                     case 0:
-                        DushyUpgrade.upgradeWorkbenchTE.upgradeItem = item;
+                        DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade = item;
                         break;
                     case 1:
-                        DushyUpgrade.upgradeWorkbenchTE.upgradeStone = item;
+                        DushyUpgrade.upgradeWorkbenchTE.upgradeMaterial = item;
                         break;
                     case 2:
                         DushyUpgrade.upgradeWorkbenchTE.protectionScroll = item;
@@ -177,7 +161,7 @@ namespace UpgradeSystem.UI {
                     return false;
 
             else if (slotNumber == 1) //Second slot
-                return DushyUpgrade.upgradeStones.Contains(item.type);
+                return DushyUpgrade.upgradeStones.Contains(item.type) || DushyUpgrade.upgradeScrolls.Contains(item.type);
 
             else //Last slot
                 return DushyUpgrade.protectionScrolls.Contains(item.type);

@@ -7,6 +7,7 @@ using UpgradeSystem.Items;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using UpgradeSystem.Items.Scrolls.UpgradeScrolls;
 
 namespace UpgradeSystem {
     class UpgradeProjectileInfo : GlobalProjectile {
@@ -84,6 +85,24 @@ namespace UpgradeSystem {
                 return DushyUpgrade.NO_CHANGE;
             }
         }
+
+        public void RepairItem(Item brokenItem) {
+            UpgradeInfo info = brokenItem.GetGlobalItem<UpgradeInfo>(mod);
+            if (info.broken) {
+                broken = false;
+                info.modifier = getDamageModifier(info.level);
+                brokenItem.SetNameOverride(this.baseName);
+                if (DushyUpgrade.IsAWeapon(brokenItem)) {
+                    brokenItem.damage = (int)Math.Round((Convert.ToDouble(info.baseDamage * info.modifier) / 100));
+                    brokenItem.crit = (int)Math.Round((Convert.ToDouble(info.baseCrit * info.modifier) / 100));
+                    if(info.elemented)
+                        info.elementDamage = (int)Math.Round(Convert.ToDouble(brokenItem.damage * 0.10));
+                }
+                else
+                    brokenItem.defense = (int)Math.Round((Convert.ToDouble(info.baseArmor * info.modifier) / 100));
+            }
+        }
+
         public int UpgradeWeapon(Item itemToUpgrade, Boolean isProtected) {
             UpgradeInfo info = itemToUpgrade.GetGlobalItem<UpgradeInfo>(mod);
 
@@ -154,6 +173,60 @@ namespace UpgradeSystem {
                     return DushyUpgrade.BREAKING;
                 }
             }
+        }
+
+        public int UpgradeWithScroll(Item itemToUpgrade, Item upgradeScroll) {
+            UpgradeInfo info = itemToUpgrade.GetGlobalItem<UpgradeInfo>(mod);
+            int scrollLevel = getLevelFromScroll(mod, upgradeScroll);
+            if(info.level >= scrollLevel)
+                return DushyUpgrade.NO_CHANGE;
+
+            if(!info.upgraded)
+                info.baseName = itemToUpgrade.Name;
+
+            info.level = scrollLevel;
+            info.upgraded = true;
+            itemToUpgrade.SetNameOverride(info.baseName + " +" + info.level);
+
+            info.modifier = getDamageModifier(info.level);
+
+            if (DushyUpgrade.IsAnArmor(itemToUpgrade)) {
+                info.baseArmor = itemToUpgrade.defense;
+
+                itemToUpgrade.defense = (int)Math.Round((Convert.ToDouble(info.baseArmor * info.modifier) / 100));
+            }
+            else if (DushyUpgrade.IsAWeapon(itemToUpgrade)) {
+                info.baseCrit = itemToUpgrade.crit;
+                info.baseDamage = itemToUpgrade.damage;
+
+                itemToUpgrade.damage = (int)Math.Round((Convert.ToDouble(info.baseDamage * info.modifier) / 100));
+                itemToUpgrade.crit = (int)Math.Round((Convert.ToDouble(info.baseCrit * info.modifier) / 100));
+            }
+            else
+                return DushyUpgrade.NO_CHANGE;
+            return DushyUpgrade.SUCCESS;
+
+        }
+
+        public int getLevelFromScroll(Mod mod, Item upgradeScroll) {
+            if (upgradeScroll.type == mod.ItemType<UpgradeScroll4>())
+                return 4;
+            if (upgradeScroll.type == mod.ItemType<UpgradeScroll5>())
+                return 5;
+            if (upgradeScroll.type == mod.ItemType<UpgradeScroll6>())
+                return 6;
+            if (upgradeScroll.type == mod.ItemType<UpgradeScroll7>())
+                return 7;
+            if (upgradeScroll.type == mod.ItemType<UpgradeScroll8>())
+                return 8;
+            if (upgradeScroll.type == mod.ItemType<UpgradeScroll9>())
+                return 9;
+            if (upgradeScroll.type == mod.ItemType<UpgradeScroll10>())
+                return 10;
+            if (upgradeScroll.type == mod.ItemType<UpgradeScroll11>())
+                return 11;
+            else
+                return 1;
         }
 
         public int UpgradeArmor(Item itemToUpgrade, Boolean isProtected) {
@@ -449,25 +522,6 @@ namespace UpgradeSystem {
             {
                 info.socket3 = pearlName;
                 return;
-            }
-        }
-
-        public void RepairItem(Item item, Player player)
-        {
-            UpgradeInfo info = item.GetGlobalItem<UpgradeInfo>(mod);
-            if (info.broken)
-            {
-                broken = false;
-                info.modifier = getDamageModifier(info.level);
-                item.SetNameOverride(this.baseName);
-                if (DushyUpgrade.IsAWeapon(item))
-                {
-                    item.damage = (int)Math.Round((Convert.ToDouble(info.baseDamage * info.modifier) / 100));
-                    item.crit = (int)Math.Round((Convert.ToDouble(info.baseCrit * info.modifier) / 100));
-                    info.elementDamage = (int)Math.Round(Convert.ToDouble(item.damage * 0.10));
-                }
-                else
-                    item.defense = (int)Math.Round((Convert.ToDouble(info.baseArmor * info.modifier) / 100));
             }
         }
 

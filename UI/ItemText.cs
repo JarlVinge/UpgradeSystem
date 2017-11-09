@@ -13,7 +13,6 @@ namespace UpgradeSystem.UI {
         public float alpha;
         public int alphaDir = 1;
         public string name;
-        public int stack;
         public float scale = 1f;
         public float rotation;
         public Color color;
@@ -75,16 +74,6 @@ namespace UpgradeSystem.UI {
                 }
                 bool flag = false;
                 string text = this.name;
-                if (this.stack > 1) {
-                    object obj = text;
-                    text = string.Concat(new object[]
-                    {
-                        obj,
-                        " (",
-                        this.stack,
-                        ")"
-                    });
-                }
                 Vector2 value = Main.fontMouseText.MeasureString(text);
                 value *= this.scale;
                 value.Y *= 0.8f;
@@ -92,16 +81,6 @@ namespace UpgradeSystem.UI {
                 for (int i = 0; i < 20; i++) {
                     if (Main.itemText[i].active && i != whoAmI) {
                         string text2 = Main.itemText[i].name;
-                        if (Main.itemText[i].stack > 1) {
-                            object obj2 = text2;
-                            text2 = string.Concat(new object[]
-                            {
-                                obj2,
-                                " (",
-                                Main.itemText[i].stack,
-                                ")"
-                            });
-                        }
                         Vector2 value2 = Main.fontMouseText.MeasureString(text2);
                         value2 *= Main.itemText[i].scale;
                         value2.Y *= 0.8f;

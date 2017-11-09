@@ -16,9 +16,11 @@ namespace UpgradeSystem.Tiles
 			Main.tileNoAttach[Type] = true;
 			Main.tileTable[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x1);
-			TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
-			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(mod.GetTileEntity<UpgradeWorkbenchTE>().Hook_AfterPlacement, -1, 0, true);
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
+            TileObjectData.newTile.Width = 3;
+            TileObjectData.newTile.Height = 3;
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
+            TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(mod.GetTileEntity<UpgradeWorkbenchTE>().Hook_AfterPlacement, -1, 0, true);
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			ModTranslation name = CreateMapEntryName();
@@ -80,14 +82,14 @@ namespace UpgradeSystem.Tiles
 
 	public class UpgradeWorkbenchTE : ModTileEntity
 	{
-		internal Item upgradeItem;
-		internal Item upgradeStone;
+		internal Item itemToUpgrade;
+		internal Item upgradeMaterial;
 		internal Item protectionScroll;
 
 		public UpgradeWorkbenchTE()
 		{
-			upgradeItem = new Item();
-			upgradeStone = new Item();
+			itemToUpgrade = new Item();
+			upgradeMaterial = new Item();
 			protectionScroll = new Item();
 		}
 

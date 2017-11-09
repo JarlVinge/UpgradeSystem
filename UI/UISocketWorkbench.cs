@@ -48,7 +48,7 @@ namespace UpgradeSystem.UI {
                 int x = 167;
                 int y = 42 * i + Main.instance.invBottom + 84;
                 Rectangle r = new Rectangle(x, y, (int)((float)Main.inventoryBackTexture.Width * Main.inventoryScale), (int)((float)Main.inventoryBackTexture.Height * Main.inventoryScale));
-                Item item = i == 0 ? DushyUpgrade.upgradeWorkbenchTE.upgradeItem : (i == 1 ? DushyUpgrade.upgradeWorkbenchTE.upgradeStone : DushyUpgrade.upgradeWorkbenchTE.protectionScroll);
+                Item item = i == 0 ? DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade : (i == 1 ? DushyUpgrade.upgradeWorkbenchTE.upgradeMaterial : DushyUpgrade.upgradeWorkbenchTE.protectionScroll);
 
                 if (r.Contains(value) && !PlayerInput.IgnoreMouseInterface) {
                     Main.player[Main.myPlayer].mouseInterface = true;
@@ -58,10 +58,10 @@ namespace UpgradeSystem.UI {
                 ItemSlot.Draw(spriteBatch, ref item, 3, new Vector2(x, y));
                 switch (i) {
                     case 0:
-                        DushyUpgrade.upgradeWorkbenchTE.upgradeItem = item;
+                        DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade = item;
                         break;
                     case 1:
-                        DushyUpgrade.upgradeWorkbenchTE.upgradeStone = item;
+                        DushyUpgrade.upgradeWorkbenchTE.upgradeMaterial = item;
                         break;
                     case 2:
                         DushyUpgrade.upgradeWorkbenchTE.protectionScroll = item;
