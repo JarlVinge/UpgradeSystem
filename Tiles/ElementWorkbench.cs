@@ -17,7 +17,7 @@ namespace UpgradeSystem.Tiles {
             TileObjectData.newTile.Width = 3;
             TileObjectData.newTile.Height = 2;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
-            TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(mod.GetTileEntity<RepairWorkbenchTE>().Hook_AfterPlacement, -1, 0, true);
+            TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(mod.GetTileEntity<ElementWorkbenchTE>().Hook_AfterPlacement, -1, 0, true);
             TileObjectData.addTile(Type);
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
             ModTranslation name = CreateMapEntryName();
@@ -58,12 +58,12 @@ namespace UpgradeSystem.Tiles {
                 player.editedChestName = false;
             }
 
-            int index = mod.GetTileEntity<RepairWorkbenchTE>().Find(left, top);
+            int index = mod.GetTileEntity<ElementWorkbenchTE>().Find(left, top);
             if (index == -1) {
                 return;
             }
-            RepairWorkbenchTE bookcaseTE = (RepairWorkbenchTE)TileEntity.ByID[index];
-            DushyUpgrade.repairWorkbenchTE = bookcaseTE;
+            ElementWorkbenchTE bookcaseTE = (ElementWorkbenchTE)TileEntity.ByID[index];
+            DushyUpgrade.elementWorkbenchTE = bookcaseTE;
 
             Main.playerInventory = true;
             Main.LocalPlayer.chest = -1;
