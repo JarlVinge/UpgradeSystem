@@ -39,6 +39,7 @@
     <Compile Include="DushyUpgrade.cs" />
     <Compile Include="Items\Orbs\OrbLifeSteal.cs" />
     <Compile Include="Items\Orbs\OrbMoveSpeed.cs" />
+    <Compile Include="Items\Placeable\ElementWorkbench.cs" />
     <Compile Include="Items\Placeable\RepairWorkbench.cs" />
     <Compile Include="Items\Scrolls\ElementalScroll.cs" />
     <Compile Include="Items\Scrolls\ProtectionScroll.cs" />
@@ -55,9 +56,11 @@
     <Compile Include="Items\Placeable\SocketWorkbench.cs" />
     <Compile Include="Items\Placeable\UpgradeWorkbench.cs" />
     <Compile Include="NPCs\Upgradist.cs" />
+    <Compile Include="Tiles\ElementWorkbench.cs" />
     <Compile Include="Tiles\RepairWorkbench.cs" />
     <Compile Include="Tiles\SocketWorkbench.cs" />
     <Compile Include="Tiles\UpgradeWorkbench.cs" />
+    <Compile Include="UI\UIElementWorkbench.cs" />
     <Compile Include="UI\UIRepairWorkbench.cs" />
     <Compile Include="UI\ItemText.cs" />
     <Compile Include="UI\UISocketWorkbench.cs" />

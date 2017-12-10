@@ -53,7 +53,7 @@ namespace UpgradeSystem.UI {
                 }
                 else {
                     UpgradeInfo info = DushyUpgrade.repairWorkbenchTE.brokenItem.GetGlobalItem<UpgradeInfo>();
-                    info.RepairItem(DushyUpgrade.repairWorkbenchTE.brokenItem);
+                    info.repairItem(DushyUpgrade.repairWorkbenchTE.brokenItem);
                     DushyUpgrade.repairWorkbenchTE.repairScroll.stack--;
                     ItemText.NewText(Main.player[Main.myPlayer], "Restored !", Color.Gold);
                 }

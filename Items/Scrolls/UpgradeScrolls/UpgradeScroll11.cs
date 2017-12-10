@@ -11,6 +11,7 @@ namespace UpgradeSystem.Items.Scrolls.UpgradeScrolls {
     class UpgradeScroll11 : ModItem {
 
         public int scrollLevel = 11;
+
         public override void SetDefaults() {
             item.UseSound = SoundID.Item43;
             item.useStyle = 4;
@@ -23,28 +24,20 @@ namespace UpgradeSystem.Items.Scrolls.UpgradeScrolls {
             item.rare = 11;
             return;
         }
-        public override void SetStaticDefaults()
-        {
+        public override void SetStaticDefaults() {
             DisplayName.SetDefault("Upgrade Scroll +" + this.scrollLevel);
             Tooltip.SetDefault("Upgrades items to " + this.scrollLevel + ", Item level must be below scroll level.");
-        }
-
-        public override bool UseItem(Player player) {
-            Item item = player.inventory[0];
-            if (item.type > 0) {
-                UpgradeInfo info = item.GetGlobalItem<UpgradeInfo>(mod);
-                if ((!info.upgraded || info.level < this.scrollLevel) && !info.broken) {
-                    info.UpgradeItemScroll(item, player, this.scrollLevel);
-                    return true;
-                }
-                return false;
-            }
-            return false;
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "UpgradeScroll10", 2);
+            recipe.AddIngredient(null, "UpgradeStone", 40);
+            recipe.AddIngredient(ItemID.FragmentSolar, 40);
+            recipe.AddIngredient(ItemID.FragmentNebula, 40);
+            recipe.AddIngredient(ItemID.FragmentVortex, 40);
+            recipe.AddIngredient(ItemID.FragmentStardust, 40);
+            recipe.AddIngredient(ItemID.LunarBar, 50);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

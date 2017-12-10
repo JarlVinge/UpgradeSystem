@@ -11,6 +11,7 @@ using Terraria.GameInput;
 using Terraria.UI;
 using Terraria.GameContent.UI.Elements;
 using Terraria.Graphics;
+using System.Diagnostics;
 
 namespace UpgradeSystem.UI {
     class UIUpgradeWorkbench {
@@ -56,9 +57,9 @@ namespace UpgradeSystem.UI {
                         UpgradeInfo info = DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade.GetGlobalItem<UpgradeInfo>();
                         int result;
                         if (DushyUpgrade.upgradeScrolls.Contains(DushyUpgrade.upgradeWorkbenchTE.upgradeMaterial.type))
-                            result = info.UpgradeWithScroll(DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade, DushyUpgrade.upgradeWorkbenchTE.upgradeMaterial);
+                            result = info.upgradeWithScroll(DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade, DushyUpgrade.upgradeWorkbenchTE.upgradeMaterial);
                         else
-                            result = info.Upgrade(DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade, isProtected);
+                            result = info.upgrade(DushyUpgrade.upgradeWorkbenchTE.itemToUpgrade, isProtected);
 
                         DushyUpgrade.upgradeWorkbenchTE.upgradeMaterial.stack--;
                         if (isProtected)

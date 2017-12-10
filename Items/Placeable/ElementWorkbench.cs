@@ -3,11 +3,11 @@ using Terraria.ModLoader;
 
 namespace UpgradeSystem.Items.Placeable {
 
-    public class RepairWorkbench : ModItem {
+    public class ElementWorkbench : ModItem {
 
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Repair Workbench");
-            Tooltip.SetDefault("Repair your broken weapons on this workbench.");
+            DisplayName.SetDefault("Element Workbench");
+            Tooltip.SetDefault("Enchant your weapons with powerfull elements.");
         }
 
         public override void SetDefaults() {
@@ -21,7 +21,7 @@ namespace UpgradeSystem.Items.Placeable {
             item.useStyle = 1;
             item.consumable = true;
             item.value = 150;
-            item.createTile = mod.TileType("RepairWorkbench");
+            item.createTile = mod.TileType("ElementWorkbench");
         }
 
         public override void AddRecipes() {

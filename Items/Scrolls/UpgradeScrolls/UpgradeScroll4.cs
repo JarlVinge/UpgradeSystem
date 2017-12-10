@@ -9,7 +9,9 @@ using Terraria.ModLoader;
 
 namespace UpgradeSystem.Items.Scrolls.UpgradeScrolls {
     class UpgradeScroll4 : ModItem {
+
         public int scrollLevel = 4;
+
         public override void SetDefaults() {
             item.UseSound = SoundID.Item43;
             item.useStyle = 4;
@@ -22,21 +24,19 @@ namespace UpgradeSystem.Items.Scrolls.UpgradeScrolls {
             item.rare = 4;
             return;
         }
+
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Upgrade Scroll +" + this.scrollLevel);
             Tooltip.SetDefault("Upgrades items to " + this.scrollLevel + ", Item level must be below scroll level.");
         }
-        public override bool UseItem(Player player) {
-            Item item = player.inventory[0];
-            if (item.type > 0) {
-                UpgradeInfo info = item.GetGlobalItem<UpgradeInfo>(mod);
-                if ((!info.upgraded || info.level < this.scrollLevel) && !info.broken) {
-                    info.UpgradeItemScroll(item, player, this.scrollLevel);
-                    return true;
-                }
-                return false;
-            }
-            return false;
+
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "UpgradeStone", 1);
+            recipe.AddIngredient(ItemID.FallenStar, 2);
+            recipe.AddIngredient(ItemID.Silk, 5);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

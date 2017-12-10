@@ -60,40 +60,6 @@ namespace UpgradeSystem.NPCs
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot) {
-            if (NPC.downedBoss1) { //Eye
-                shop.item[nextSlot].SetDefaults(mod.ItemType("UpgradeScroll4"));
-                nextSlot++;
-            }
-            if (NPC.downedBoss2) { //EoW BoF
-                shop.item[nextSlot].SetDefaults(mod.ItemType("UpgradeScroll5"));
-                nextSlot++;
-            }
-            if (NPC.downedBoss3) { //Skeletron
-                shop.item[nextSlot].SetDefaults(mod.ItemType("UpgradeScroll6"));
-                nextSlot++;
-            }
-            if (Main.hardMode) { //Hardmode WoF
-                shop.item[nextSlot].SetDefaults(mod.ItemType("UpgradeScroll7"));
-                nextSlot++;
-            }
-            if (NPC.downedMechBossAny) { //Any mecha
-                shop.item[nextSlot].SetDefaults(mod.ItemType("UpgradeScroll8"));
-                nextSlot++;
-            }
-            if (NPC.downedPlantBoss) { //Plantera
-                shop.item[nextSlot].SetDefaults(mod.ItemType("UpgradeScroll9"));
-                nextSlot++;
-            }
-            if (NPC.downedGolemBoss) { //Golem
-                shop.item[nextSlot].SetDefaults(mod.ItemType("UpgradeScroll10"));
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(mod.ItemType("ElementalScroll"));
-                nextSlot++;
-            }
-            if (NPC.downedFishron) { //Fishron
-                shop.item[nextSlot].SetDefaults(mod.ItemType("UpgradeScroll11"));
-                nextSlot++;
-            }
             if (NPC.downedBoss2) { //EoW BoF
                 shop.item[nextSlot].SetDefaults(mod.ItemType("OrbMoveSpeed"));
                 nextSlot++;

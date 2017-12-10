@@ -72,21 +72,25 @@ namespace UpgradeSystem {
             "Spirit" //Mana and lifesteal
         };
 
-        public int Upgrade(Item itemToUpgrade, Boolean isProtected) {
+        public int upgrade(Item itemToUpgrade, Boolean isProtected) {
             UpgradeInfo info = itemToUpgrade.GetGlobalItem<UpgradeInfo>(mod);
 
             if (DushyUpgrade.IsAWeapon(itemToUpgrade)) { //Si c'est une arme
-                int upgradeResult = UpgradeWeapon(itemToUpgrade, isProtected);
+                int upgradeResult = upgradeWeapon(itemToUpgrade, isProtected);
                 return upgradeResult;
             } else if (DushyUpgrade.IsAnArmor(itemToUpgrade)) { //Si c'est une armure
-                int upgradeResult = UpgradeArmor(itemToUpgrade, isProtected);
+                int upgradeResult = upgradeArmor(itemToUpgrade, isProtected);
                 return upgradeResult;
             } else {
                 return DushyUpgrade.NO_CHANGE;
             }
         }
 
-        public void RepairItem(Item brokenItem) {
+        public int enchantItem(Item itemToEnchant) {
+            throw new NotImplementedException();
+        }
+
+        public void repairItem(Item brokenItem) {
             UpgradeInfo info = brokenItem.GetGlobalItem<UpgradeInfo>(mod);
             if (info.broken) {
                 broken = false;
@@ -103,7 +107,7 @@ namespace UpgradeSystem {
             }
         }
 
-        public int UpgradeWeapon(Item itemToUpgrade, Boolean isProtected) {
+        public int upgradeWeapon(Item itemToUpgrade, Boolean isProtected) {
             UpgradeInfo info = itemToUpgrade.GetGlobalItem<UpgradeInfo>(mod);
 
             if (!info.upgraded) {
@@ -120,7 +124,7 @@ namespace UpgradeSystem {
                 return DushyUpgrade.SUCCESS;
             }
             else {
-                int roll = RollUpgrade(info.level);
+                int roll = rollUpgrade(info.level);
                 if (roll == DushyUpgrade.SUCCESS) {
                     info.level++;
                     info.modifier = getDamageModifier(info.level);
@@ -128,7 +132,7 @@ namespace UpgradeSystem {
                     itemToUpgrade.crit = (int)Math.Round((Convert.ToDouble(info.baseCrit * info.modifier) / 100));
                     itemToUpgrade.SetNameOverride(info.baseName + " +" + info.level);
                     if (info.level >= 10 && !info.elemented)
-                        EnchantItemElement(itemToUpgrade, info);
+                        enchantItemElement(itemToUpgrade, info);
                     if (info.elemented)
                         info.elementDamage = (int)Math.Round(Convert.ToDouble(itemToUpgrade.damage * 0.10));
                     return DushyUpgrade.SUCCESS;
@@ -175,7 +179,7 @@ namespace UpgradeSystem {
             }
         }
 
-        public int UpgradeWithScroll(Item itemToUpgrade, Item upgradeScroll) {
+        public int upgradeWithScroll(Item itemToUpgrade, Item upgradeScroll) {
             UpgradeInfo info = itemToUpgrade.GetGlobalItem<UpgradeInfo>(mod);
             int scrollLevel = getLevelFromScroll(mod, upgradeScroll);
             if(info.level >= scrollLevel)
@@ -229,7 +233,7 @@ namespace UpgradeSystem {
                 return 1;
         }
 
-        public int UpgradeArmor(Item itemToUpgrade, Boolean isProtected) {
+        public int upgradeArmor(Item itemToUpgrade, Boolean isProtected) {
             UpgradeInfo info = itemToUpgrade.GetGlobalItem<UpgradeInfo>(mod);
 
             if (!info.upgraded) {
@@ -244,7 +248,7 @@ namespace UpgradeSystem {
                 return DushyUpgrade.SUCCESS;
             }
             else {
-                int roll = RollUpgrade(info.level);
+                int roll = rollUpgrade(info.level);
                 if (roll == DushyUpgrade.SUCCESS) {
                     info.level++;
                     info.modifier = getDamageModifier(info.level);
@@ -313,7 +317,7 @@ namespace UpgradeSystem {
             return isAvailable;
         }
 
-        public void EnchantItemElement(Item item, UpgradeInfo info)
+        public void enchantItemElement(Item item, UpgradeInfo info)
         {
             info.elemented = true;
             info.elementDamage = (int)Math.Round(Convert.ToDouble(item.damage * 0.10));
@@ -322,14 +326,14 @@ namespace UpgradeSystem {
             info.elementType = ElementsType[index];
         }
 
-        public void ChangeItemElement(Item item, UpgradeInfo info)
+        public void changeItemElement(Item item, UpgradeInfo info)
         {
             Random random = new Random();
             int index = random.Next(ElementsType.Count);
             info.elementType = ElementsType[index];
         }
 
-        public int RollUpgrade(int level)
+        public int rollUpgrade(int level)
         {
             Random random = new Random();
             int leRandom = random.Next(0, 9999);
@@ -464,7 +468,7 @@ namespace UpgradeSystem {
             return numberOfSocket;
         }
 
-        public void UpgradeItemScroll(Item item, Player player, int scrollLevel)
+        public void upgradeitemScroll(Item item, Player player, int scrollLevel)
         {
             UpgradeInfo info = item.GetGlobalItem<UpgradeInfo>(mod);
             UpgradePlayer thePlayer = player.GetModPlayer<UpgradePlayer>(mod);
@@ -502,7 +506,7 @@ namespace UpgradeSystem {
 
             }
             if (info.level >= 10 && info.elemented == false)
-                EnchantItemElement(item, info);
+                enchantItemElement(item, info);
         }
 
         public void AddIntoSocket(String pearlName, Color color, UpgradeInfo info)

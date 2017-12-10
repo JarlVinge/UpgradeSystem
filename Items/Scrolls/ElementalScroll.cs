@@ -22,22 +22,9 @@ namespace UpgradeSystem.Items.Scrolls {
             return;
         }
 
-        public override void SetStaticDefaults()
-        {
+        public override void SetStaticDefaults() {
             DisplayName.SetDefault("Scroll of the 11 Elements");
             Tooltip.SetDefault("A special scroll who randomly add element to your item.");
-        }
-        public override bool UseItem(Player player) {
-            Item item = player.inventory[0];
-            if (item.type > 0) {
-                UpgradeInfo info = item.GetGlobalItem<UpgradeInfo>(mod);
-                if (info.elemented && info.level >= 10) {
-                    info.ChangeItemElement(item, info);
-                    return true;
-                }
-                return false;
-            }
-            return false;
         }
     }
 }

@@ -8,12 +8,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace UpgradeSystem.Items.Scrolls.UpgradeScrolls {
-    class UpgradeScroll6 : ModItem
-    {
+    class UpgradeScroll6 : ModItem {
         public int scrollLevel = 6;
 
-        public override void SetDefaults()
-        {
+        public override void SetDefaults() {
             item.UseSound = SoundID.Item43;
             item.useStyle = 4;
             item.useTurn = true;
@@ -26,27 +24,17 @@ namespace UpgradeSystem.Items.Scrolls.UpgradeScrolls {
             return;
         }
 
-        public override void SetStaticDefaults()
-        {
+        public override void SetStaticDefaults() {
             DisplayName.SetDefault("Upgrade Scroll +" + this.scrollLevel);
             Tooltip.SetDefault("Upgrades items to " + this.scrollLevel + ", Item level must be below scroll level.");
-        }
-        public override bool UseItem(Player player) {
-            Item item = player.inventory[0];
-            if (item.type > 0) {
-                UpgradeInfo info = item.GetGlobalItem<UpgradeInfo>(mod);
-                if ((!info.upgraded || info.level < this.scrollLevel) && !info.broken) {
-                    info.UpgradeItemScroll(item, player, this.scrollLevel);
-                    return true;
-                }
-                return false;
-            }
-            return false;
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "UpgradeScroll5", 5);
+            recipe.AddIngredient(null, "UpgradeScroll5", 1);
+            recipe.AddIngredient(null, "UpgradeStone", 4);
+            recipe.AddIngredient(ItemID.MeteoriteBar, 10);
+            recipe.AddIngredient(ItemID.Bone, 40);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

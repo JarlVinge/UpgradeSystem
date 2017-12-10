@@ -21,6 +21,7 @@ namespace UpgradeSystem
 		internal static UpgradeWorkbenchTE upgradeWorkbenchTE;
 		internal static RepairWorkbenchTE repairWorkbenchTE;
 		internal static SocketWorkbenchTE socketWorkbenchTE;
+		internal static ElementWorkbenchTE elementWorkbenchTE;
 
         public const int SUCCESS = 1;
         public const int NO_CHANGE = 2;

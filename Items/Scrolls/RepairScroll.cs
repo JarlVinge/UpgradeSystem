@@ -19,5 +19,15 @@ namespace UpgradeSystem.Items.Scrolls {
             DisplayName.SetDefault("Scroll of Repair");
             Tooltip.SetDefault("Repairs your broken items.");
         }
+
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "UpgradeStone", 5);
+            recipe.AddIngredient(ItemID.LifeCrystal, 5);
+            recipe.AddIngredient(ItemID.HealingPotion, 10);
+            recipe.AddIngredient(ItemID.RestorationPotion, 10);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }
