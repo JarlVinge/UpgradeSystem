@@ -7,7 +7,7 @@ namespace UpgradeSystem.Items.Placeable {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Socket Workbench");
-            Tooltip.SetDefault("This is a modded workbench.");
+            Tooltip.SetDefault("Insert your pearls with this workbench.");
         }
 
         public override void SetDefaults() {
