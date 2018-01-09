@@ -7,7 +7,7 @@ namespace UpgradeSystem.Items.Placeable {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Element Workbench");
-            Tooltip.SetDefault("Enchant your weapons with powerfull elements.");
+            Tooltip.SetDefault("Enchant your weapons with powerful elements.");
         }
 
         public override void SetDefaults() {
