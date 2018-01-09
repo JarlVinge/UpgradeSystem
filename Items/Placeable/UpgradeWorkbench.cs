@@ -7,7 +7,7 @@ namespace UpgradeSystem.Items.Placeable {
 
 		public override void SetStaticDefaults() {
             DisplayName.SetDefault("Upgrade Workbench");
-            Tooltip.SetDefault("This is a modded workbench.");
+            Tooltip.SetDefault("Upgrade your weapons with this workbench.");
 		}
 
 		public override void SetDefaults() {
